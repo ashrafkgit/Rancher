@@ -41,3 +41,15 @@ IT administrators gain visibility and enforce policies across all users, cluster
 • Ensure that security policies are enforced across clusters/namespaces
 
 • Monitoring - Do I have sufficient visibility to detect and to troubleshoot issues?
+
+
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/17639af9-3364-46d5-89ae-ae4ff5a1b240)
+
+
+
+
+**Two ways to install Rancher:
+
+Sandbox - Standalone Docker Container ( not for production) & High Availability Rancher 
+Single node HA Installation - if you don’t want to allow more than 2 kubernetes nodes to run Rancher 
+
