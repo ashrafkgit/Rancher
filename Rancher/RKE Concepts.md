@@ -1,199 +1,103 @@
-RKE Concepts
+## RKE Concepts
 
-Thursday, May 4, 2023
 
-8:03 AM
+##
+**RKE Introduction**
+##
+  
 
+Rancher Kubernetes Engine (RKE) is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers.
+
+It works on bare-metal and virtualized servers.
+
+_Requirements:_
+
+SSH Connection to the nodes.
+
+Docker Installed on the nodes.
+
+  
+
+- RKE uses cluster.yml config file to define the kubernetes cluster.
+- Each cluster.yml represents a kubernetes cluster configuration.
+- rke up uses the cluster.yml to get the nodes information and it installs the cluster according to the specs defined in the file.
+
+  
+
+ Cluster.yml = **Is RKE config file**
+
+  
+``` bash
+---
+nodes:
+     -  address: 10.0.0.1 
+         role: [controlplane,etcd,worker] 
+         user: ubuntu
+         hostname_override: node1
+```
+
+https://rke.docs.rancher.com/example-yamls
+
+  
+_Demo!!_
+``` bash
+$rke up --config cluster.yml
+```
+
+_To generate new empty config file_
+```bash
+$rke config --empty --print
+```
+
+_To help communicate with the cluster_
+``` bash
+$export KUBECONFIG=$PWD/kube_config_cluster.yml
+```
+
+Then, run $kubectl get nodes, to check the nodes status.
+
+
+## RKE Design
+
+**RKE Design** - RKEConfig
+##
+The first building block of RKE is the configuration file definition which by default is called *cluster.yml*
+
+RKE config can be generated using (rke config) command.
+
+In cluster.yml file, the nodes will represent machines and their roles where kubernetes is deployed, and whereas *services* will represent kubernetes components to be installed.
+
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/3655c7ee-593c-43c0-bc0b-82a13a506f27)
+
+
+
+
+
+**RKE Design** - State File (cluster.rkestate)
+
+Once the RKE installation is completed with *rke up* command using cluster.yml file, it will create a *cluster.rkestate* file
+
+RKE uses a config file (cluster.yml) to provision cluster, and keeps track of cluster status using a state file (cluster.rkestate)
+
+  
+
+State File consists of two sections:
+
+- DesiredState
+- CurrentState
+ 
+
+*Desired state* represents the state the cluster should be in and *Current state* represents the actual state of the cluster
+ 
+ Both current and desired state consists of:
+- RKEConfig
+- Cluster Certificate bundle
  
 
-> **RKE Introduction**
->
->  
->
-> Rancher Kubernetes Engine (RKE) is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers.
->
-> It works on bare-metal and virtualized servers.
->
->  
->
-> Requirements:
->
-> SSH Connection to the nodes
->
-> Docker Installed on the nodes.
->
->  
->
->  
+DesiredState is populated by **rke** from *cluster.yml* file during the provisioning workflow.
 
--   RKE uses cluster.yml config file to define the kubernetes cluster.
 
--   Each cluster.yml represents a kubernetes cluster configuration.
-
--   rke up uses the cluster.yml to get the nodes information and it installs the cluster according to the specs defined in the file.
-
->  
->
-> Cluster.yml = **Is RKE config file**
->
->  
-
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><p>---</p>
-<p>nodes:</p>
-<p>- address: 10.0.0.1</p>
-<p>role: [controlplane,etcd,worker]</p>
-<p>user: ubuntu</p>
-<p>hostname_override: node1</p></th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-
->  
->
-> <https://rke.docs.rancher.com/example-yamls>
->
->  
-
-<table>
-<colgroup>
-<col style="width: 72%" />
-<col style="width: 27%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>$rke up --config cluster.yml</th>
-<th>DEMO!!</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-
-> * *
-
-<table>
-<colgroup>
-<col style="width: 59%" />
-<col style="width: 40%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>$rke config --empty --print</th>
-<th>To generate new empty config file</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>$export KUBECONFIG=$PWD/kube_config_cluster.yml</td>
-<td>To help communicate with the cluster</td>
-</tr>
-</tbody>
-</table>
-
->  
-
-<table>
-<colgroup>
-<col style="width: 85%" />
-<col style="width: 14%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Then, run $kubectl get nodes, to check the nodes status.</th>
-<th> </th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-
->  
->
->  
->
->  
->
->  
->
->  
->
-> **RKE Design** - RkeConfig
->
-> <span dir="rtl">-</span>
->
-> The first building block of RKE is the configuration file definition which by default is called *cluster.yml*
->
-> RKE config can be generated using (rke config) command.
->
->  
->
-> In cluster.yml file, the nodes will represent machines and their roles where kubernetes is deployed, and whereas *services* will represent kubernetes components to be installed.
->
-> * *
->
-> <img src="media/image1.png" style="width:5.04167in;height:2.02083in" />
->
->  
->
->  
->
->  
->
->  
->
->  
->
-> **RKE Design** - State File (cluster.rkestate)
->
->  
->
-> Once the RKE installation is completed with *rke up* command using cluster.yml file, it will create a *cluster.rkestate* file
->
->  
->
-> RKE uses a config file (cluster.yml) to provision cluster, and keeps track of cluster status using a state file (cluster.rkestate)
->
->  
->
-> State File consists of two sections:
->
->  
-
--   DesiredState
-
--   CurrentState
-
->  
->
-> *Desired state* represents the state the cluster should be in and *Current state* represents the actual state of the cluster
->
->  
->
-> Both current and desired state consists of:
->
->  
-
--   RKEConfig
-
--   Cluster Certificate bundle
-
->  
->
-> DesiredState is populated by **rke** from *cluster.yml* file during the provisioning workflow.
->
->  
->
-> On each run RKE tries to bring the cluster to match the DesiredState and then when it succeed it writes the CurrentState.
->
->  
+On each run RKE tries to bring the cluster to match the DesiredState and then when it succeed it writes the CurrentState.
 
 -   Users can edit cluster.yml file , for example add new role to the new node
 
@@ -203,51 +107,50 @@ Thursday, May 4, 2023
 
 -   when finish it will update the current state
 
->  
->
->  
->
-> While provisioning kubernetes cluster with Rancher, RKE does not use kubeadm in the background it uses it own code written in GO lang.
->
->  
->
-> Configmap of the full cluster state deployed on the kubernetes system. It is not meant to be used but as a backup stored in the cluster.
->
->  
->
-> $kubectl get configmap -n kube-system | grep state
->
-> *full-cluster-state*
->
->  
->
->  
->
->  
->
->  
->
-> **RKE Design** - Nodes and Tunnelling
->
->  
->
-> Each node should have - Docker and SSH
->
-> Each node **config** should have at least the following - address, SSH user, Role
->
->  
->
->  
->
-> Why SSH? Because RKE connects via SSH to each node to run containers in it, uses SSH tunnelling / ssh port forwarding to connect to the docker socket on the nodes.
->
->  
->
-> RKE had an option to connect to the docker daemon on each node by allowing the docker to listen to the tcp port but this proved to be really complicated way for the users to getting started quickly with RKE, and its requires user to login to each node and configure each node with tcp port and make sure connection is secured by using TLS via SSH certificates but RKE choose to use SSH tunnel to each node then use port forwarding feature to connect to the docker socket on each node.
->
->  
->
->  
+  
+
+  
+
+While provisioning kubernetes cluster with Rancher, RKE does not use kubeadm in the background it uses it own code written in GO lang.
+
+Configmap of the full cluster state deployed on the kubernetes system. It is not meant to be used but as a backup stored in the cluster.
+
+``` bash
+
+$kubectl get configmap -n kube-system | grep state
+
+```
+
+*full-cluster-state*
+  
+
+  
+
+  
+
+  
+
+**RKE Design** - Nodes and Tunnelling
+
+ 
+
+Each node should have - Docker and SSH
+
+Each node **config** should have at least the following - address, SSH user, Role
+
+  
+
+  
+
+Why SSH? Because RKE connects via SSH to each node to run containers in it, uses SSH tunnelling / ssh port forwarding to connect to the docker socket on the nodes.
+
+  
+
+RKE had an option to connect to the docker daemon on each node by allowing the docker to listen to the tcp port but this proved to be really complicated way for the users to getting started quickly with RKE, and its requires user to login to each node and configure each node with tcp port and make sure connection is secured by using TLS via SSH certificates but RKE choose to use SSH tunnel to each node then use port forwarding feature to connect to the docker socket on each node.
+
+  
+
+  
 >
 >  
 >
