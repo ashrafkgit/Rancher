@@ -1,20 +1,14 @@
 ## RKE Concepts
 
-
-##
 **RKE Introduction**
 ##
-  
+Rancher Kubernetes Engine (RKE) is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers. It works on bare-metal and virtualized servers.
 
-Rancher Kubernetes Engine (RKE) is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers.
+_Basic requirements:_
 
-It works on bare-metal and virtualized servers.
+1. SSH Connection to the nodes.
 
-_Requirements:_
-
-SSH Connection to the nodes.
-
-Docker Installed on the nodes.
+2. Docker Installed on the nodes.
 
   
 
@@ -57,6 +51,12 @@ $export KUBECONFIG=$PWD/kube_config_cluster.yml
 Then, run $kubectl get nodes, to check the nodes status.
 
 
+
+
+
+
+
+##
 ## RKE Design
 
 **RKE Design** - RKEConfig
@@ -73,13 +73,12 @@ In cluster.yml file, the nodes will represent machines and their roles where kub
 
 
 
+##
 **RKE Design** - State File (cluster.rkestate)
-
+##
 Once the RKE installation is completed with *rke up* command using cluster.yml file, it will create a *cluster.rkestate* file
 
 RKE uses a config file (cluster.yml) to provision cluster, and keeps track of cluster status using a state file (cluster.rkestate)
-
-  
 
 State File consists of two sections:
 
@@ -87,15 +86,14 @@ State File consists of two sections:
 - CurrentState
  
 
-*Desired state* represents the state the cluster should be in and *Current state* represents the actual state of the cluster
- 
- Both current and desired state consists of:
+*Desired state* represents the state the cluster should be in and *Current state* represents the actual state of the cluster.
+
+Both current and desired state consists of:
 - RKEConfig
 - Cluster Certificate bundle
  
 
 DesiredState is populated by **rke** from *cluster.yml* file during the provisioning workflow.
-
 
 On each run RKE tries to bring the cluster to match the DesiredState and then when it succeed it writes the CurrentState.
 
@@ -108,30 +106,24 @@ On each run RKE tries to bring the cluster to match the DesiredState and then wh
 -   when finish it will update the current state
 
   
-
-  
-
 While provisioning kubernetes cluster with Rancher, RKE does not use kubeadm in the background it uses it own code written in GO lang.
 
 Configmap of the full cluster state deployed on the kubernetes system. It is not meant to be used but as a backup stored in the cluster.
 
+_full-cluster-state_
 ``` bash
 
 $kubectl get configmap -n kube-system | grep state
 
 ```
 
-*full-cluster-state*
-  
 
   
 
   
-
-  
-
+##
 **RKE Design** - Nodes and Tunnelling
-
+##
  
 
 Each node should have - Docker and SSH
@@ -140,204 +132,108 @@ Each node **config** should have at least the following - address, SSH user, Rol
 
   
 
-  
-
+_Notes:
 Why SSH? Because RKE connects via SSH to each node to run containers in it, uses SSH tunnelling / ssh port forwarding to connect to the docker socket on the nodes.
 
-  
+RKE had an option to connect to the docker daemon on each node by allowing the docker to listen to the tcp port but this proved to be really complicated way for the users to getting started quickly with RKE, and its requires user to login to each node and configure each node with tcp port and make sure connection is secured by using TLS via SSH certificates but RKE choose to use SSH tunnel to each node then use port forwarding feature to connect to the docker socket on each node._
 
-RKE had an option to connect to the docker daemon on each node by allowing the docker to listen to the tcp port but this proved to be really complicated way for the users to getting started quickly with RKE, and its requires user to login to each node and configure each node with tcp port and make sure connection is secured by using TLS via SSH certificates but RKE choose to use SSH tunnel to each node then use port forwarding feature to connect to the docker socket on each node.
-
-  
 
   
->
->  
->
-> Different modes of RKE depends of the kind of tunnelling factories
->
->  
->
-> RKE library , connect docker with service port or
->
->  
->
-> RKE modes are:
->
->  
+Different modes of RKE depends of the kind of tunnelling factories
+ 
 
--   RKE cli
+RKE library , connect docker with service port or
 
-> \- Docker tunnel / ssh --&gt; docker.sock
+RKE modes are:
 
--   RKE local
+- RKE cli
+  Docker tunnel / ssh --&gt; docker.sock
+- RKE local
+  Dokcer tunnel / ssh --&gt; docker service port
+- RKE dind
+  Dokcer tunnel / ssh --&gt; docker service port
+ 
 
-> \- Dokcer tunnel / ssh --&gt; docker service port
+ 
 
--   RKE dind
+RKE local - deploys k8s cluster and its components locally on the machine
 
-> \- Dokcer tunnel / ssh --&gt; docker service port
->
->  
->
->  
->
-> Rke local - deploys k8s cluster and its components locally on the machine
->
-> RKE dind (docker in docker) - creates different docker containers and specify them as nodes, deploys k8s components within docker container
->
->  
->
->  
->
->  
->
->  
->
-> **RKE Design** - Services
->
->  
->
-> RKE deploys k8s components as docker containers.
->
->  
->
-> Components are deployed according to the node's role (different planes):
->
->  
->
->  
->
->  
->
-> **Etcd**
+RKE dind (docker in docker) - creates different docker containers and specify them as nodes, deploys k8s components within docker container
 
--   etcd container
+ 
+##
+**RKE Design** - Services
+##
+ 
 
--   kube-proxy container
+RKE deploys k8s components as docker containers.
 
--   kubelet container
+  
 
--   Nginx-proxy container
+Components are deployed according to the node's role (different planes):
 
->  
->
-> **Controlplane**
+  
 
--   kube-apiserver container
+  
 
--   kube-controller-manager container
+  
 
--   kube-scheduler container
+ **Etcd**
 
--   kube-proxy container
+- etcd container
+- kube-proxy container
+- kubelet container
+- Nginx-proxy container
 
--   kubelet container
 
->  
->
-> **Worker**
+**Controlplane**
 
--   kube-proxy container
+- kube-apiserver container
+- kube-controller-manager container
+- kube-scheduler container
+- kube-proxy container
+- kubelet container
 
--   kubelet container
+**Worker**
 
--   Nginx-proxy container
+- kube-proxy container
+- kubelet container
+- Nginx-proxy container
 
->  
->
-> **Helper services**
+**Helper services**
 
--   Sidekick container (rke-tools)
+- Sidekick container (rke-tools)
+- Port check container (rke-tools)
+- Etcd recurring snapshot (rke-tools)
+- Certificate installer (rke-tools)
+- File deployer (rke-tools)
+- Addon Deployer (rke-tools) $docker ps -a | grep rke-tools
 
--   Port check container (rke-tools)
 
--   Etcd recurring snapshot (rke-tools)
-
--   Certificate installer (rke-tools)
-
--   File deployer (rke-tools)
-
--   Addon Deployer (rke-tools) $docker ps -a | grep rke-tools
-
->  
->
->  
->
->  
->
->  
->
->  
-
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
 <th><p>kubelet</p>
-<p> </p></th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
+ entrypoint.sh
 
->  
->
-> entrypoint.sh
->
->  
-
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
 <th>Sidekick</th>
-</tr>
-</thead>
-<tbody>
-</tbody>
-</table>
 
->  
->
->  
->
->  
->
->  
->
->  
->
-> **RKE Design** - Version
->
->  
 
--   Each RKE version release defines kubernetes version
+##
+**RKE Design** - Version
+##
+ 
+ - Each RKE version release defines kubernetes version
+ - Each RKE version comes with supported kubernetes versions
 
--   Each RKE version comes with supported kubernetes versions
+``` bash 
+$ rke config -l -a
+```
 
-> $ rke config -l -a
->
->  
->
->  
->
->  
+- Version mapping is defined in kontainer-driver-metadata repo
+  
+    https://github.com/rancher/kontainer-driver-metadata>
+   
+- And each kubernetes version with mapped RKE version has different system images
 
--   Version mapping is defined in kontainer-driver-metadata repo
-
-> <https://github.com/rancher/kontainer-driver-metadata>
->
->  
-
--   And each kubernetes version with mapped RKE version has different system images
-
--   For example :
+For example :
 
 > <img src="media/image2.jpeg" style="width:5in;height:2.5in" />
 >
@@ -544,19 +440,3 @@ RKE had an option to connect to the docker daemon on each node by allowing the d
 > This is solved by using the configuration in [rancher/rancher#15793 (comment)](https://github.com/rancher/rancher/issues/15793#issuecomment-602049405)
 >
 > Docs:  <https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet>
->
-> * *
->
->  
->
->  
->
->  
->
->  
->
->  
->
->  
->
->  
