@@ -212,13 +212,17 @@ Components are deployed according to the node's role (different planes):
 - Etcd recurring snapshot (rke-tools)
 - Certificate installer (rke-tools)
 - File deployer (rke-tools)
-- Addon Deployer (rke-tools) $docker ps -a | grep rke-tools
+- Addon Deployer (rke-tools) 
 
 
-<th><p>kubelet</p>
- entrypoint.sh
+_To get rke-tools process status_
+``` bash
+$docker ps -a | grep rke-tools
+```
 
-<th>Sidekick</th>
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/c2b099a7-494b-4bed-be4d-1338715f3e36)
+
+
 
 
 ##
