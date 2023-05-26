@@ -8,7 +8,7 @@ You are here to learn over what Rancher is, how it works, how to set it up, and 
 
 
 
-# Document Mapper
+## Document Mapper
 
 | Serial No | Document Link |
 | ------ | ------ |
