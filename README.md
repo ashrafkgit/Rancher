@@ -16,7 +16,7 @@ You are here to learn over what Rancher is, how it works, how to set it up, and 
 | 2 | [Doc 2 - RKE Concepts][PlDb] |
 | 3 | [Doc 3 - Rancher-vs-RKE][PlDc]
 
-[PlDa]: <https://github.com/zealvora/certified-kubernetes-security-specialist/tree/master/domain-1-cluster-setup>
+[PlDa]: <./Rancher/Introduction.md>
 
 
 
