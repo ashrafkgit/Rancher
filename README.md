@@ -5,20 +5,26 @@ Managing a Kubernetes cluster can be a challenge, and managing a bunch of them c
 You are here to learn over what Rancher is, how it works, how to set it up, and how to navigate around Rancher.
 
 
-![image](https://github.com/ashrafkgit/Linux/assets/134578702/ac9d5c15-ba62-45e2-806f-b461c3cc76cf)
+
 
 
 # Document Mapper
 
-| Document | Document Link |
+| Serial No | Document Link |
 | ------ | ------ |
-| 1 | [Doc 1 - Introduction][PlDa] |
-| 2 | [Doc 2 - RKE Concepts][PlDb] |
-| 3 | [Doc 3 - Rancher-vs-RKE][PlDc]
+| 1 | [Introduction][PlDa] |
+| 2 | [RKE Concepts][PlDb] |
+| 3 | [Rancher-vs-RKE][PlDc]
 
 [PlDa]: <./Rancher/Introduction.md>
 [PlDb]: <./Rancher/RKE Concepts.md>
 [PlDc]: <./Rancher/Rancher-vs-RKE.md>
+
+
+![Capture](https://github.com/ashrafkgit/Rancher/assets/134578702/0eea8136-34b2-4169-9de2-ddb83c458a0c)
+
+
+
 
 
 
