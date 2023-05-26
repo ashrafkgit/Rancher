@@ -17,6 +17,8 @@ You are here to learn over what Rancher is, how it works, how to set it up, and 
 | 3 | [Doc 3 - Rancher-vs-RKE][PlDc]
 
 [PlDa]: <./Rancher/Introduction.md>
+[PlDb]: <./Rancher/RKE Concepts.md>
+[PlDc]: <./Rancher/Rancher-vs-RKE.md>
 
 
 
