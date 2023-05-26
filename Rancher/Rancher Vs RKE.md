@@ -9,12 +9,17 @@
  
 * Create a hosted Kubernetes cluster (for example, GKE (Google), AKS (Azure), EKS (AWS))
  
-* Create a custom cluster (uses parts of RKE, but there are differences)
+
  
  
  ![image](https://github.com/ashrafkgit/Rancher/assets/134578702/90737ad8-7d7e-4527-aea0-b4035e99db71)
  
- 
+
+* Create a custom cluster (uses parts of RKE, but there are differences)
+
+
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/5d46f1ce-8ede-45b0-87b9-633576144db8)
+
  
 RKE can be installed and configured on the existing linux nodes / approach cloud provider to provision, install & configure 
 
