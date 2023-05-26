@@ -2,13 +2,15 @@
 
 **RKE Introduction**
 ##
-Rancher Kubernetes Engine (RKE) is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers. It works on bare-metal and virtualized servers.
+Rancher Kubernetes Engine (RKE) is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers.
+
+It works on bare-metal and virtualized servers.
 
 _Basic requirements:_
 
-1. SSH Connection to the nodes.
+> SSH Connection to the nodes.
 
-2. Docker Installed on the nodes.
+> Docker Installed on the nodes.
 
   
 
@@ -110,7 +112,11 @@ While provisioning kubernetes cluster with Rancher, RKE does not use kubeadm in 
 
 Configmap of the full cluster state deployed on the kubernetes system. It is not meant to be used but as a backup stored in the cluster.
 
-_full-cluster-state_
+
+
+
+
+_Get full-cluster-state by cmd_
 ``` bash
 
 $kubectl get configmap -n kube-system | grep state
@@ -168,15 +174,7 @@ RKE dind (docker in docker) - creates different docker containers and specify th
 
 RKE deploys k8s components as docker containers.
 
-  
-
 Components are deployed according to the node's role (different planes):
-
-  
-
-  
-
-  
 
  **Etcd**
 
@@ -233,210 +231,132 @@ $ rke config -l -a
    
 - And each kubernetes version with mapped RKE version has different system images
 
-For example :
+For example:
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/547c051d-3886-4492-8439-3316d135fb2d)
 
-> <img src="media/image2.jpeg" style="width:5in;height:2.5in" />
->
->  
->
->  
->
->  
->
-> Earlier RKE version use to store cluster / rke state information in form of secrets on the kubernetes cluster
->
-> It proved to be inconsistent while adding and removing nodes
->
-> It is now stored in form of config - which can be used to reconstruct rke cluster as well.
->
->  
->
-> $kubectl get configmap -n kube-system | grep state
->
-> $kubectl get configmap -n kube-system full-cluster-state -o yaml (full cluster state)
->
-> $kubectl get configmap -n kube-system full-cluster-state -o json | jq.data
->
->  
->
->  
->
->  
->
->  
->
->  
->
->  
->
-> **RKE Provisioning** Workflow
->
->  
 
--   The RKE code uses 2 main functions to build cluster i ,e; **ClusterInit()** and **ClusterUp()**
+Earlier RKE version use to store cluster / rke state information in form of secrets on the kubernetes cluster proved to be inconsistent while adding and removing nodes.
+It is now stored in form of config - which can be used to reconstruct rke cluster as well.
 
-> **rke init -&gt; rke up**
->
->  
+``` bash
+$kubectl get configmap -n kube-system | grep state
+```
 
--   ClusterInit is rke init which update the desire state of the **state file, which** means **ClusterInit() is** responsible for updating the DesireState and write a new **cluster.rkestate** file
+_fetch full cluster state_
+``` bash
+$kubectl get configmap -n kube-system full-cluster-state -o yaml 
+```
+``` bash
+$kubectl get configmap -n kube-system full-cluster-state -o json | jq.data
+```
 
->  
 
--   Later the cluster up compares the current state file with desired state file, if it applies difference then it applies difference on the cluster and it updates the current state with the new state of the cluster
+##
+**RKE Provisioning** Workflow
+##
+ 
+The RKE code uses 2 main functions to build cluster i ,e; **ClusterInit()** and **ClusterUp()**
 
->  
->
->  
->
->  
->
-> <img src="media/image3.png" style="width:4in;height:4.15278in" />
->
->  
->
->  
->
->  
->
-> <u>X509 Component Authentication</u>
->
->  
+**rke init -&gt; rke up**
 
--   RKE components uses X509 Authentication
+- ClusterInit is rke init which update the desire state of the **state file, which** means **ClusterInit() is** responsible for updating the DesireState and write a new **cluster.rkestate** file
+- Later the cluster up compares the current state file with desired state file, if it applies difference then it applies difference on the cluster and it updates the current state with the new state of the cluster
 
--   Generating certs works as follows:
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/7c5cdc18-190e-4e8d-9678-9139d5a3f6a9)
 
-    -   Generate master CA cert and Aggregation layer CA cert/key pair.
 
-    -   Generate cert/key pair for each service (kube-api, scheduler, controller, kubelet, kube-proxy)
+##
+## X509 Component Authentication
+##
 
-    -   Generate etcd cert/key pair for each etcd node.
+- RKE components uses X509 Authentication
+- Generating certs works as follows:
 
-    -   Generate proxy-client cert/key pair.
+    > Generate master CA cert and Aggregation layer CA cert/key pair.
+    
+    > Generate cert/key pair for each service (kube-api, scheduler, controller, kubelet, kube-proxy)
+    
+    > Generate etcd cert/key pair for each etcd node.
+    
+    > Generate proxy-client cert/key pair.
+    
+    > Generate service account key file.
 
-    -   Generate service account key file.
 
->  
 
--   On each rke run, rke checks if etcd/cp node is added or removed, if yes then:
+- On each rke run, rke checks if etcd/cp node is added or removed, if yes then:
 
-> It generates etcd/kube-api cert for each new node
->
-> It regenerates old etcd/kube-api cert to update the SANS
->
->  
+    > It generates etcd/kube-api cert for each new node
+    
+    > It regenerates old etcd/kube-api cert to update the SANS
 
--   Certificate rotation happens in rke init, it regenerates all certs.
+- Certificate rotation happens in rke init, it regenerates all certs.
 
->  
->
->  
->
-> <img src="media/image4.png" style="width:3.16667in;height:2.3125in" />
->
->  
->
->  
->
-> Kubelet has its own api certificate which API has to authenticate with kubelet api server
->
->  
->
->  
->
->  
->
->  
->
-> **RKE Reconciliation loop** ( ADD/REMOVE cycle)
->
->  
->
-> <u>Removing a node</u>
->
->  
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/48964b9b-b771-4f8d-be6d-c7d4338540ac)
 
--   RKE first checks for the ROLE:
+_Kubelet has its own api certificate which API has to authenticate with kubelet api server_
 
-> If node is part of ETCD
 
--   Removes etcd member from etcd cluster ( etcdctl member remove)
+##
+**RKE Reconciliation loop** ( ADD/REMOVE cycle)
+##
 
--   Delete the node from K8s cluster ( kubectl delete node &lt;&gt;)
 
--   Clean the docker containers on the host
+**Removing a node**  
 
-> If node is CP/Worker node:
+RKE first checks for the ROLE:
 
--   Delete the node from K8s cluster ( kubectl delete node &lt;&gt; )
+_If node is part of ETCD_
 
--   Clean the docker containers on the host
+> Removes etcd member from etcd cluster ( etcdctl member remove)
+\ 
+> Delete the node from K8s cluster ( kubectl delete node <>)
 
->  
->
-> <u>Adding a node</u>
->
->  
+> Clean the docker containers on the host
 
--   RKE first checks for the ROLE:
+_If node is CP/Worker node_
 
-> If it is ETCD node and not already a member
+> Delete the node from K8s cluster ( kubectl delete node <>)
 
--   Add ETCD member to the cluster ( etcdctl member remove)
+> Clean the docker containers on the host
 
--   Run ETDC on the new node
 
-> If node is CP/Worker:
 
--   Sync taints
+**Adding a node**
 
->  
->
->  
->
-> Important notes:-
->
->  
->
->  
+RKE first checks for the ROLE:
 
--   To use new features RKE cluster must be upgraded ( to upgrade to specific version, define version in the cluster.yaml file)
+_If it is ETCD node and not already a member_
 
->  
+> Add ETCD member to the cluster ( etcdctl member remove)
 
--   Can multiple ETCDs be removed ? Yes , yes remove nodes from the yaml file and reconciling loop should delete one by one without breaking cluster
+> Run ETDC on the new node
 
->  
+_If node is CP/Worker_
 
--   How RKE is using certificates for worker nodes,
+> Sync taints
+> 
+> 
+> 
+> 
+> 
+##
+##
+**_Important notes_**
+##
+##
 
->  
->
-> All nodes use the same client certificate to allow Kubelet to reach the Kubernetes API server, which is not that good for security
->
-> Kubelet uses a self-signed certificate for its HTTPS endpoint, instefad of using a certificated generated by the Kubernetes CA.
->
->  
->
-> After reading "Kubernetes The Hard Way" by Kelsey Hightower:
->
->  
->
-> It confirms that having one certificate for Kubelet for each worker node is the best practice:
->
-> <https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/04-certificate-authority.md#the-kubelet-client-certificates>
->
-> Using that certificate and the associated key for Kubelet HTTPS is also what is done (through Kubelet tlsCertFile and tlsPrivateKeyFile options):
->
-> <https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/09-bootstrapping-kubernetes-workers.md#configure-the-kubelet>
->
-> We can also notice that the certificate generated includes the IP address i'm looking for.
->
-> For RKE, it should correspond to the node "address" and the node "internal\_address" defined in the YAML cluster file.
->
->  
->
-> This is solved by using the configuration in [rancher/rancher#15793 (comment)](https://github.com/rancher/rancher/issues/15793#issuecomment-602049405)
->
-> Docs:  <https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet>
+- To use new features RKE cluster must be upgraded ( to upgrade to specific version, define version in the cluster.yaml file)
+
+- Can multiple ETCDs be removed ? Yes , yes remove nodes from the yaml file and reconciling loop should delete one by one without breaking cluster
+
+- How RKE is using certificates for worker nodes,
+
+     > All nodes use the same client certificate to allow Kubelet to reach the Kubernetes API server, which is not that good for security
+      
+     > Kubelet uses a self-signed certificate for its HTTPS endpoint, instefad of using a certificated generated by the Kubernetes CA.
+
+
+
+
+
