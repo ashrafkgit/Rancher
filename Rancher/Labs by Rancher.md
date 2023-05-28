@@ -1,24 +1,12 @@
-**Labs by Rancher**
+##
+## Labs by Rancher
+##
 
-Wednesday, May 24, 2023
-
-8:10 AM
 
  
 
 In-depth online workshop designed to give DevOps and IT teams the hands-on skills they need to deploy and manage Kubernetes everywhere.
 
- 
-
-<https://learn.eu.hobbyfarm.io/app/home>
-
- 
-
-ashraf@hpe.com
-
-Password: rr@123
-
-Access Code anz240523
 
 Rancher Rodeo XIV - 2.7
 
@@ -26,25 +14,27 @@ Rancher Rodeo XIV - 2.7
 
  
 
-<img src="media/image1.png" style="width:12.66667in;height:6.52778in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/42c97397-88b9-4a0e-9005-8d78c7d32044)
 
  
 
-<img src="media/image2.png" style="width:9.59722in;height:5.14583in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/1dee8179-ca87-48c0-91b2-cfb57182f888)
 
  
 
  
 
-<img src="media/image3.png" style="width:4.8125in;height:4.58333in" />
-
- 
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/d50cba1b-aa07-4746-973c-9b8a84fc9357)
 
 Cffb9dnzw7sbf745jqn4n5kcls799r4ppkfv624gjlx5mh2j4lcq72
 
  
 
-<img src="media/image4.png" style="width:4.8125in;height:3.26389in" />
+
+
+ 
+
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/545fa19d-9dc8-44ef-a252-d84b30fab669)
 
  
 
@@ -54,7 +44,7 @@ rr@123456789
 
  
 
-<img src="media/image5.png" style="width:12.625in;height:7.125in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/468740cd-11a0-4bdd-8093-5ece4a7709da)
 
  
 
@@ -64,11 +54,8 @@ rr@123456789
 
  
 
-<img src="media/image6.png" style="width:12.70139in;height:6.52778in" />
-
- 
-
-<img src="media/image7.png" style="width:12.66667in;height:2.93056in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/c4d8cf9d-6d06-463e-a1f0-ae0177e8a9a5)
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/2db413c6-98ad-45b2-939f-62f6496c52ee)
 
  
 
@@ -80,43 +67,43 @@ rr@123456789
 
  
 
-<img src="media/image8.png" style="width:12.64583in;height:6.72222in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/fbbe6fd4-e692-434b-ade1-dbabc19cca20)
 
  
 
-<img src="media/image9.png" style="width:12.625in;height:2.13889in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/26310467-f950-4a9f-90b0-c9f03ebcdc78)
 
  
 
-<img src="media/image10.png" style="width:12.64583in;height:6.70833in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/6f2349a5-1769-483b-9826-982a7a67e862)
 
-\\
 
- 
-
-<img src="media/image11.png" style="width:12.57639in;height:6.5in" />
 
  
 
-<img src="media/image12.png" style="width:12.50694in;height:3.16667in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/75ebe9dc-eaa6-452c-b639-a813ec8549f2)
+
+ 
+
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/2d12caf7-1d00-4e15-a1af-7c1d1ec11233)
 
  
 
  
 
-<img src="media/image13.png" style="width:12.65972in;height:5.99306in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/3e8e71e6-41cd-4023-b93b-8e4502f75d66)
 
  
 
-<img src="media/image14.png" style="width:12.65972in;height:6.52778in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/f227e0bc-1004-4b11-996d-ce60bc4721eb)
 
  
 
-<img src="media/image15.png" style="width:12.64583in;height:6.66667in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/df16dc32-61d7-47e2-b7fb-d65a864f591a)
 
  
 
-<img src="media/image16.png" style="width:12.70833in;height:7.13194in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/93ce3b1d-9c81-452d-bd6a-c7d8246dfaff)
 
  
 
