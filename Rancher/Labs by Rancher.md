@@ -14,7 +14,7 @@ Rancher Rodeo XIV - 2.7
 
  
 
-![image](https://github.com/ashrafkgit/Rancher/assets/134578702/42c97397-88b9-4a0e-9005-8d78c7d32044)
+![Picture1](https://github.com/ashrafkgit/Rancher/assets/134578702/acb3a451-c536-4332-a132-40b1e34c878e)
 
  
 
@@ -109,7 +109,7 @@ rr@123456789
 
  
 
-<img src="media/image17.png" style="width:12.68056in;height:6.75in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/626f4738-3840-4934-90b1-c8213bdd6540)
 
  
 
@@ -117,33 +117,9 @@ rr@123456789
 
  
 
-<img src="media/image18.png" style="width:13.32639in;height:5.69444in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/a7323427-1c70-4a0d-a606-87954f4fd205)
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/bb8832b9-56e1-4dc1-9b48-95965c09c734)
 
- 
-
-<img src="media/image19.png" style="width:13.27778in;height:2.49306in" />
-
- 
-
- 
-
- 
-
- 
-
- 
-
-<img src="media/image20.png" style="width:13.32639in;height:6.40278in" />
-
- 
-
- 
-
-<img src="media/image21.png" style="width:13.3125in;height:6.17361in" />
-
- 
-
-<img src="media/image22.png" style="width:13.29167in;height:4.6875in" />
 
  
 
@@ -155,55 +131,65 @@ rr@123456789
 
  
 
- 
-
-<img src="media/image23.png" style="width:13.32639in;height:6.34722in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/a10f1d48-7cc3-4ecf-9031-12aec39353ea)
 
  
 
  
 
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/024882fb-fc4d-43a8-aa96-2a6bc487dfac)
+
+ 
+
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/dc0d7e6e-52d5-4c25-a54b-a8190b67e1e3)
+
  
 
  
 
-** Rancher Kubernetes Cluster Bootstrapping**
+ 
 
  
 
+ 
+
+ 
+
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/4bb50b91-96a4-4cc7-bf99-bbbdc3fb59a6)
+
+ 
+
+ 
+
+ 
+
+ 
+
+## Rancher Kubernetes Cluster Bootstrapping
+
+ 
+
+_Command syntax_
+``` bash 
 ec2-user@ip-172-31-44-121:~&gt; curl -fL <https://rancher.34.242.237.239.sslip.io/system-agent-install.sh> | sudo sh -s - --server <https://rancher.34.242.237.239.sslip.io> --label 'cattle.io/os=linux' --token cf55b9n5bcwtd4zzqgsdgfsz7xv78246gzzsrm9nqz5nq6frg4wrsf --ca-checksum e5b2f4cc07660772707d3c35a83e6f7c180f5a97301aa9e63282ac2e7b545262 --etcd --controlplane --worker --node-name cluster01
+```
 
  
 
-* *
 
-* *
-
-<img src="media/image24.png" style="width:13.32639in;height:6.34722in" />
-
- 
-
- 
-
-<img src="media/image25.png" style="width:13.32639in;height:6.4375in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/99958cdf-f8e5-4461-af30-fd6604da22a2)
 
  
 
  
 
-<img src="media/image26.png" style="width:13.32639in;height:6.375in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/802ced67-3377-42f6-8615-2b12c4336d38)
 
  
 
  
 
- 
-
-Downloaded KUBE CONFIG File
-
- 
-
-&lt;&lt;cluster01.yaml&gt;&gt;
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/5ac9f3f7-49ac-4927-a810-5745e7c86d38)
 
  
 
@@ -211,15 +197,29 @@ Downloaded KUBE CONFIG File
 
  
 
- 
+_Downloaded KUBE CONFIG File_
 
-<img src="media/image27.png" style="width:13.3125in;height:5.77778in" />
-
- 
+<<cluster01.yaml>>
 
  
 
-&lt;&lt;cluster01.yaml&gt;&gt;
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/67b94efe-f7a8-4a2d-acb8-617bc301e5a9)
+
+ 
+
+ 
+
+<<cluster01.yaml>>
 
  
 
@@ -227,31 +227,19 @@ Downloaded KUBE CONFIG File
 
 **Rancher Management Server config:-**
 
- 
-
- 
-
-&lt;&lt;rancher01.txt&gt;&gt;
+> <<rancher01.txt>>
 
  
 
 **KubeConfig:-**
 
- 
-
- 
-
-&lt;&lt;Copy KubeConfig to Clipboard.txt&gt;&gt;
-
- 
+> <<Copy KubeConfig to Clipboard.txt>> 
 
  
-
-**Rancher Kubernetes Cluster config:-**
 
- 
+ **Rancher Kubernetes Cluster config:-**
 
-&lt;&lt;cluster01.txt&gt;&gt;
+ > <<cluster01.txt>>
 
  
 
@@ -261,7 +249,7 @@ Downloaded KUBE CONFIG File
 
  
 
-<img src="media/image28.png" style="width:13.27083in;height:5.71528in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/465c660b-cf78-4e6c-9279-95fb5bef02a6)
 
  
 
@@ -269,7 +257,7 @@ Downloaded KUBE CONFIG File
 
  
 
-<img src="media/image29.png" style="width:13.32639in;height:6.33333in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/9f117d28-8d64-420c-8cb4-2cb0fa44ae54)
 
  
 
@@ -277,37 +265,37 @@ Downloaded KUBE CONFIG File
 
  
 
-<img src="media/image30.png" style="width:13.32639in;height:6.40278in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/b5b3b2a8-4369-404f-9beb-cd045e2634b2)
 
  
 
  
 
-<img src="media/image31.png" style="width:13.32639in;height:6.41667in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/44f1c3dc-886d-4fea-998d-8a0532dd25e3)
 
  
 
  
 
-<img src="media/image32.png" style="width:13.29861in;height:6.38194in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/2a454e9b-a346-4e1c-bc98-5af6e861f806)
 
  
 
  
 
-<img src="media/image33.png" style="width:13.29167in;height:6.4375in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/8b037816-ed8d-40f8-b258-d2f1c17977fe)
 
  
 
-<img src="media/image34.png" style="width:13.29167in;height:6.39583in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/4469fcd7-cf72-4a57-9337-132d65222419)
 
  
 
  
 
-Downloaded File
+_Downloaded File_
 
-&lt;&lt;helm-operation-l76q6\_undefined.log&gt;&gt;
+> <<helm-operation-l76q6_undefined.log>>
 
  
 
@@ -317,53 +305,47 @@ Downloaded File
 
  
 
-<img src="media/image35.png" style="width:13.3125in;height:6.39583in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/dba69a7a-105e-4fdd-9cdb-af1ecfac386b)
 
  
 
-<img src="media/image36.png" style="width:13.3125in;height:6.375in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/a0b391b2-02fb-41ca-896f-b0b3ce93ec5b)
 
  
 
-<img src="media/image37.png" style="width:13.29167in;height:6.77778in" />
-
- 
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/6772f95a-c8bb-402d-8967-454f06ae6211)
 
  
 
-<img src="media/image38.png" style="width:13.32639in;height:6.30556in" />
-
  
 
-<img src="media/image39.png" style="width:13.3125in;height:1.58333in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/9b191061-ed23-4eb5-ac02-e644af04c2d2)
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/d6358757-09eb-412d-b5f8-c2bb46563bbf)
 
- 
 
  
 
-<img src="media/image40.png" style="width:13.27778in;height:5.6875in" />
-
  
 
-<img src="media/image41.png" style="width:13.32639in;height:1.625in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/07b94f73-a26a-4966-a296-210fe1242246)
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/f2733ab3-bff2-4db5-aff3-d660030117fb)
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/6621c428-2375-4505-8a3b-4124cbbf7d78)
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/dc9bff2d-fbd4-40bc-a8e8-3a5e32ce3205)
 
-> <img src="media/image42.png" style="width:11.35417in;height:5.10417in" />
 
-<img src="media/image43.png" style="width:13.32639in;height:1.9375in" />
-
  
 
  
 
-<img src="media/image44.png" style="width:13.32639in;height:6.17361in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/f56d4097-051e-407e-97f8-e0be6298a3f9)
 
  
 
-<img src="media/image45.png" style="width:13.3125in;height:6.39583in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/b09e4129-725e-45e0-a70c-53c9380da838)
 
  
 
-<img src="media/image46.png" style="width:13.32639in;height:6.35417in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/48961202-aba6-47a2-a532-4fc8b1fa50c7)
 
  
 
@@ -371,15 +353,15 @@ Downloaded File
 
  
 
-<img src="media/image47.png" style="width:13.29861in;height:6.36806in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/ca2fdb08-dc9d-431f-b9d7-c9854d0febc6)
 
  
 
-<img src="media/image48.png" style="width:13.32639in;height:6.41667in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/5f8a6645-69ab-480e-ada6-35fa86f3cd5f)
 
  
 
-<img src="media/image49.png" style="width:13.32639in;height:6.35417in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/a9930db4-2300-4cf0-879a-80739281172d)
 
  
 
@@ -389,21 +371,21 @@ Downloaded File
 
  
 
-<img src="media/image50.png" style="width:13.29167in;height:6.375in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/87901fe7-da5e-4b92-b848-ed65577aa48f)
 
  
 
  
 
-<img src="media/image51.png" style="width:13.3125in;height:6.38194in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/c9949edb-0925-446c-abab-ee5762a294c2)
 
  
 
-<img src="media/image52.png" style="width:13.29861in;height:6.41667in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/27b8632e-8fb7-44b0-ab2c-069b09b2c926)
 
  
 
-<img src="media/image53.png" style="width:13.3125in;height:6.30556in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/e7fd2cef-7d41-4a1c-b5a0-b92d058858d5)
 
  
 
@@ -411,56 +393,49 @@ Downloaded File
 
  
 
-<img src="media/image54.png" style="width:13.32639in;height:6.33333in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/33e7bd6b-7c95-49dc-b379-a9b5a809ca40)
 
  
 
  
 
-<img src="media/image55.png" style="width:13.29861in;height:6.45833in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/a07a626e-5341-48fd-8ec9-95cc1be05804)
 
  
 
  
-
-<img src="media/image56.png" style="width:13.32639in;height:6.375in" />
 
- 
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/1ee5b51b-3ef3-42bb-a724-dd6d18e6b91d)
 
  
 
  
-
-<img src="media/image57.png" style="width:13.29167in;height:5.95833in" />
 
  
 
-<img src="media/image58.png" style="width:13.23611in;height:6.42361in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/d80c5d5d-6edf-46d8-80c6-a7e477ff3add)
 
  
 
-<img src="media/image59.png" style="width:13.32639in;height:6.40278in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/9b7fee27-3171-4155-b2cc-847f89e8eddb)
 
  
 
- 
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/6a5b07b7-2906-45cb-a162-4dad09e7c5f5)
 
-<img src="media/image60.png" style="width:13.32639in;height:6.38194in" />
-
  
 
  
 
-Downloaded file
 
- 
+_Downloaded file_
 
-&lt;&lt;helm-operation-clprm\_undefined.log&gt;&gt;
+>  <<helm-operation-clprm_undefined.log>>
 
  
 
  
 
-<img src="media/image61.png" style="width:13.29167in;height:6.375in" />
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/1268314b-fc93-477c-b68f-125fe2e9a4ec)
 
  
