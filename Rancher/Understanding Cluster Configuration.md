@@ -2,47 +2,25 @@
 ## Understanding Cluster Configuration 
 ##
 
- <img src="media/image1.png" style="width:8.27778in;height:2.79167in" /
+ Creating Customer Cluster
+ 
+ ![image](https://github.com/ashrafkgit/Rancher/assets/134578702/b135ac52-c439-4603-b9e2-ddde3ba014fe)
 
-  
 
- <img src="media/image2.png" style="width:4.5in;height:5.1875in" /
+ ![image](https://github.com/ashrafkgit/Rancher/assets/134578702/73ca5e8a-31f7-495b-b3d6-8601b33e771f)
 
-  
-
-  
-
-  
 
   
 
   
+## Adding a node to a cluster
 
-  
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/de183584-f142-4a5d-8d53-73efd94a721f)
 
-  
+ 
+ _Find all options in the documentation_
 
-  
-
- **Adding a node to a customer cluster**
-
-  
-
-  
-
- <img src="media/image3.png" style="width:6.5in;height:1.90278in" /
-
-  
-
-  
-
-  
-
- Find all options in the documentation
-
- <https://ranchermanager.docs.rancher.com/v2.5/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options
-
-  
+ https://ranchermanager.docs.rancher.com/v2.5/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options
 
   
 
@@ -50,31 +28,21 @@
 
   
 
- After the node is successfully registered to the cluster (after provisioning has been completed and the kubelet was started and successfully connected to the kube-apiserver),
-
- the agent container created via the docker run command is removed by the cattle-node-agent DaemonSet pods
+ After the node is successfully registered to the cluster (after provisioning has been completed and the kubelet was started and successfully connected to the kube-apiserver), the agent container created via the docker run command is removed by the cattle-node-agent DaemonSet pods
 
   
 
- More information about the agents is in the documentation:
+ _More information about the agents is in the documentation_:
 
- <https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rancher-agents/
-
-  
+ https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rancher-agents/
 
   
 
-  
+ ## Global flow of agent while adding a node
 
   
 
-  
-
- **Global flow of agent while adding a node**
-
-  
-
- Global flow of agent:
+ **Global flow of agent:**
 
   
 
@@ -94,15 +62,15 @@
 
   
 
- 1\. <https://github.com/rancher/rancher/blob/v2.3.3/package/run.sh
+ 1\. https://github.com/rancher/rancher/blob/v2.3.3/package/run.sh
 
- 2\. <https://github.com/rancher/rancher/blob/v2.3.3/pkg/agent/main.go#L265
+ 2\. https://github.com/rancher/rancher/blob/v2.3.3/pkg/agent/main.go#L265
 
- 3\. <https://github.com/rancher/rancher/blob/v2.3.3/pkg/tunnelserver/tunnel.go#L107
+ 3\. https://github.com/rancher/rancher/blob/v2.3.3/pkg/tunnelserver/tunnel.go#L107
 
- 4\. <https://github.com/rancher/rancher/blob/v2.3.3/pkg/rkenodeconfigclient/client.go#L68
+ 4\. https://github.com/rancher/rancher/blob/v2.3.3/pkg/rkenodeconfigclient/client.go#L68
 
- 5\. <https://github.com/rancher/rancher/blob/v2.3.3/pkg/agent/main.go#L277
+ 5\. https://github.com/rancher/rancher/blob/v2.3.3/pkg/agent/main.go#L277
 
   
 
@@ -114,7 +82,7 @@
 
 -   All clusters in Rancher are configured with a *driver* (look for the \`driver\` key in the View in API view for a cluster)
 
--   The term kontainerdriver refers to kontainer-engine (<https://github.com/rancher/kontainer-engine), which is a command line tool and used as a library in Rancher to provision clusters
+-   The term kontainerdriver refers to kontainer-engine (https://github.com/rancher/kontainer-engine), which is a command line tool and used as a library in Rancher to provision clusters
 
 -   Kontainer-engine uses drivers as well, a driver contains the logic to *create/update/remove clusters* (¹)
 
@@ -123,9 +91,8 @@
 
 -  For instance, when an update to the cluster is called (2)
 
-  https://github.com/rancher/kontainer-engine/blob/master/drivers/rke/rke_driver.go
-
-  https://github.com/rancher/kontainer-engine/blob/release/v2.3/drivers/rke/rke_driver.go#L229
+   1. https://github.com/rancher/kontainer-engine/blob/master/drivers/rke/rke_driver.go
+   2. https://github.com/rancher/kontainer-engine/blob/release/v2.3/drivers/rke/rke_driver.go#L229
 
   
 
@@ -145,9 +112,9 @@
 
   
 
- 1\. <https://github.com/rancher/rancher/blob/v2.3.3/pkg/controllers/management/clusterprovisioner/provisioner.go#L388
+ 1\. https://github.com/rancher/rancher/blob/v2.3.3/pkg/controllers/management/clusterprovisioner/provisioner.go#L388
 
- 2\. <https://github.com/rancher/rancher/blob/v2.3.3/pkg/controllers/user/nodesyncer/nodessyncer.go#L218
+ 2\. https://github.com/rancher/rancher/blob/v2.3.3/pkg/controllers/user/nodesyncer/nodessyncer.go#L218
 
   
 
@@ -173,7 +140,7 @@
 
   
 
--  https://github.com/rancher/rancher/blob/v2.3.3/pkg/rkeworker/execute.go
+1.  https://github.com/rancher/rancher/blob/v2.3.3/pkg/rkeworker/execute.go
 
   
 
@@ -182,19 +149,14 @@
  Provisioning state will process nodes with the roles etcd and/or Control Plane, as cluster provisioning succeeds, the workers will execute the contents of their own retrieved nodeconfig
 
   
+![image](https://github.com/ashrafkgit/Rancher/assets/134578702/f23027a1-0d66-4680-b1c0-c0196ccc232e)
 
   
 
- <img src="media/image4.png" style="width:4.5625in;height:2.79167in" /
-
-  
-
-  
-
- docker exec $(docker ps --filter-label-io.cattle.agent-true --filter-name-node-agent-format='{{.ID}}') bash -c 'PARAMS=$(echo \\Node\\:{\\requestedHostname\\:\\$(echo SCATTLE\_NODE\_NAME)\\}} | base64 -w8); curl -s -k -H "X-API-Tunnel-Token: $(cat /cattle-credentials/token)" -H "X-Api-Tunnel-Params: "$(echo $PARAMS)" "$(cat /cattle-credentials/url)/v3/connect/config" ' jq . | less
-
-  
-
+_Cluster state details command_
+``` bash
+docker exec $(docker ps --filter-label-io.cattle.agent-true --filter-name-node-agent-format='{{.ID}}') bash -c 'PARAMS=$(echo \\Node\\:{\\requestedHostname\\:\\$(echo SCATTLE\_NODE\_NAME)\\}} | base64 -w8); curl -s -k -H "X-API-Tunnel-Token: $(cat /cattle-credentials/token)" -H "X-Api-Tunnel-Params: "$(echo $PARAMS)" "$(cat /cattle-credentials/url)/v3/connect/config" ' jq . | less
+```
   
 
  Endpoint used in command: /cattle-credentials/url)/v3/connect/config
@@ -209,7 +171,7 @@
 
   
 
- **ETCD Snapshots**
+ ## ETCD Snapshots
 
   
 
@@ -231,15 +193,15 @@
 
   
 
- By default, etcd data is stored under local host filesystem not container filesystem
 
- RKE Container engine is written in Golang, all rancher Golang libraries are written in Go Lang and interactions to other clusters GKE/AKS/EKS ( all have Golang libraries)happens with the help of Go lang libraries and functions to make sure provisioning works. ( Google VMs have known issues with ssh/authentication for the provisioning of cluster, a bug is opened)
+## Notes:
+
+By default, etcd data is stored under local host filesystem not container filesystem
+
+RKE Container engine is written in Golang, all rancher Golang libraries are written in Go Lang and interactions to other clusters GKE/AKS/EKS ( all have Golang libraries)happens with the help of Go lang libraries and functions to make sure provisioning works. ( Google VMs have known issues with ssh/authentication for the provisioning of cluster, a bug is opened)
 
   
 
-  
-
- GKE
 
   
 
