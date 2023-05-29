@@ -25,7 +25,7 @@ You are here to learn over what Rancher is, how it works, how to set it up, and 
 [PlDc]: <./Rancher/Rancher-vs-RKE.md>
 [PlDd]: <./Rancher/Labs by Rancher.md>
 [PlDe]: <./Rancher/Understanding Cluster Configuration.md>
-[PlDf]: <./Rancher/Rancher Updatesn.md>
+[PlDf]: <./Rancher/Rancher Updates.md>
 [PlDg]: <./Rancher/Links.md>
 
 
