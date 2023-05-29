@@ -16,11 +16,17 @@ You are here to learn over what Rancher is, how it works, how to set it up, and 
 | 2 | [RKE Concepts][PlDb] |
 | 3 | [Rancher-vs-RKE][PlDc]
 | 4 | [Labs by Rancher][PlDd]
+| 5 | [Understanding Cluster Configuration][PlDe]
+| 6 | [Rancher Updates][PlDf]
+| 7 | [Important Links][PlDg]
 
 [PlDa]: <./Rancher/Introduction.md>
 [PlDb]: <./Rancher/RKE Concepts.md>
 [PlDc]: <./Rancher/Rancher-vs-RKE.md>
 [PlDd]: <./Rancher/Labs by Rancher.md>
+[PlDe]: <./Rancher/Understanding Cluster Configuration.md>
+[PlDf]: <./Rancher/Rancher Updatesn.md>
+[PlDg]: <./Rancher/Links.md>
 
 
 ![Capture](https://github.com/ashrafkgit/Rancher/assets/134578702/0eea8136-34b2-4169-9de2-ddb83c458a0c)
