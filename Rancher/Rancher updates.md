@@ -1,6 +1,6 @@
 ## 
-## Recent Rancher Updates 
-[May'23]
+##  Rancher Updates 
+Recent [May'23]
 ##
 
 - Rancher flagship products in CNCF ecosystem is introduced
