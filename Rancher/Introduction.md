@@ -48,8 +48,12 @@ IT administrators gain visibility and enforce policies across all users, cluster
 
 
 
-**Two ways to install Rancher:
+
+#
+#
+
+Two ways to install Rancher:
 
 Sandbox - Standalone Docker Container ( not for production) & High Availability Rancher 
 Single node HA Installation - if you don’t want to allow more than 2 kubernetes nodes to run Rancher 
-
+##
