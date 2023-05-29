@@ -2,7 +2,7 @@
 ## Understanding Cluster Configuration 
 ##
 
- Creating Customer Cluster
+ Creating Custom Cluster
  
  ![image](https://github.com/ashrafkgit/Rancher/assets/134578702/b135ac52-c439-4603-b9e2-ddde3ba014fe)
 
