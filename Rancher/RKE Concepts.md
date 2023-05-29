@@ -369,6 +369,11 @@ _If node is CP/Worker_
 
 
 
+
+
+
+
+#
 After reading "Kubernetes The Hard Way" by Kelsey Hightower:
 
 It confirms that having one certificate for Kubelet for each worker node is the best practice:
@@ -387,6 +392,8 @@ This is solved by using the configuration in rancher/rancher#15793 (comment)
 
 Docs:  https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet
 
+#
+#
 
 
 
