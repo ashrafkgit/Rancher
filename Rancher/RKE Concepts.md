@@ -369,5 +369,26 @@ _If node is CP/Worker_
 
 
 
+_After reading "Kubernetes The Hard Way" by Kelsey Hightower:
+
+It confirms that having one certificate for Kubelet for each worker node is the best practice:
+
+https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/04-certificate-authority.md#the-kubelet-client-certificates
+
+Using that certificate and the associated key for Kubelet HTTPS is also what is done (through Kubelet tlsCertFile and tlsPrivateKeyFile options):
+
+https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/09-bootstrapping-kubernetes-workers.md#configure-the-kubelet
+
+We can also notice that the certificate generated includes the IP address i'm looking for. 
+
+For RKE, it should correspond to the node "address" and the node "internal_address" defined in the YAML cluster file.
+
+This is solved by using the configuration in rancher/rancher#15793 (comment)
+
+Docs:  https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet_
+
+
+
+
 
 
