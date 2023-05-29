@@ -91,8 +91,9 @@
 
 -  For instance, when an update to the cluster is called (2)
 
-   1. https://github.com/rancher/kontainer-engine/blob/master/drivers/rke/rke_driver.go
-   2. https://github.com/rancher/kontainer-engine/blob/release/v2.3/drivers/rke/rke_driver.go#L229
+1. https://github.com/rancher/kontainer-engine/blob/master/drivers/rke/rke_driver.go
+
+2. https://github.com/rancher/kontainer-engine/blob/release/v2.3/drivers/rke/rke_driver.go#L229
 
   
 
